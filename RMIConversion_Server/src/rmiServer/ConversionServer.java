@@ -16,10 +16,11 @@ public class ConversionServer {
             // Création du registre RMI
             Registry registry = LocateRegistry.createRegistry(1099);
 
-            // Enregistrement du service dans le registre RMI sous le nom "ConversionService"
+            // Enregistrement du service dans le registre RMI
             registry.rebind("ConversionService", (Remote) conversionService);
 
-            System.out.println("Serveur RMI prêt.");
+            // Affichage de verification de creation du serveur
+            System.out.println("Le serveur RMI est prêt !");
 
         } catch (Exception e) {
             e.printStackTrace();

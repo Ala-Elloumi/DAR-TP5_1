@@ -7,21 +7,24 @@ public class ConversionClient {
     public static void main(String[] args){
 
         try {
-            // Adresse et port du registre RMI
+            // Declaration de l'Adresse et le port du registre RMI
             String serverAddress = "localhost";
             int serverPort = 1099;
 
-            // Obtention du registre RMI
-            Registry registry = LocateRegistry.getRegistry(serverAddress, serverPort);
+            // Obtention d'une référence à un registre RMI d'objets distant
+            Registry registre = LocateRegistry.getRegistry(serverAddress, serverPort);
 
-            // Obtention du service RMI à partir du registre
-            IConversion conversionService = (IConversion) registry.lookup("ConversionService");
+            // Récupération du service RMI à partir du registre
+            IConversion conversionService = (IConversion) registre.lookup("ConversionService");
 
-            // Utilisez le service RMI
-            double montantDinar = 100.0;
+            // Utilisation du service RMI
+            double montantDinar = 100.00;
             double montantEuros = conversionService.convertirMontant(montantDinar);
 
-            System.out.println("Montant en Dinar : " + montantDinar);
+            // Affichage avant conversion
+            System.out.println("Montant en Dinars : " + montantDinar);
+
+            // Affichage aprés conversion
             System.out.println("Montant converti en Euros : " + montantEuros);
 
         } catch (Exception e) {
